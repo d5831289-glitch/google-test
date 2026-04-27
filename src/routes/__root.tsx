@@ -1,6 +1,4 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
-
-import appCss from "../styles.css?url";
+import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
 
 function NotFoundComponent() {
   return (
@@ -25,49 +23,14 @@ function NotFoundComponent() {
 }
 
 export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Google Ads Launchpad is a professional landing page for Google Ads management services." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Google Ads Launchpad is a professional landing page for Google Ads management services." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "Lovable App" },
-      { name: "twitter:description", content: "Google Ads Launchpad is a professional landing page for Google Ads management services." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/7f294de6-3a86-4809-9806-62794e155e22/id-preview-ac502743--e6603eec-4373-453a-87d9-b0e707aae7bf.lovable.app-1776798138078.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/7f294de6-3a86-4809-9806-62794e155e22/id-preview-ac502743--e6603eec-4373-453a-87d9-b0e707aae7bf.lovable.app-1776798138078.png" },
-    ],
-    links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-    ],
-  }),
-  shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
 });
 
-function RootShell({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
-}
-
 function RootComponent() {
-  return <Outlet />;
+  return (
+    <>
+      <Outlet />
+    </>
+  );
 }
